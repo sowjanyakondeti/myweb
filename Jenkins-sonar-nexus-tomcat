@@ -10,7 +10,7 @@ pipeline{
     stages{
         stage("Git Checkout"){
             steps{
-                git credentialsId: 'wrk', url: 'https://github.com/sowjanyakondeti/myweb.git'
+                git credentialsId: 'sowji', url: 'https://github.com/sowjanyakondeti/myweb.git'
             }
         }
         stage("Maven Build"){
@@ -40,7 +40,7 @@ pipeline{
             }
         stage("deploy-dev"){
             steps{
-                sshagent(['tomcatn']) {
+                sshagent(['tom']) {
                 sh """
                     scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@57.180.9.238:/home/ec2-user/apache-tomcat-9.0.89/webapps/
                     
